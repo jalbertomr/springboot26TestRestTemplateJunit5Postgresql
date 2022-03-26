@@ -9,7 +9,7 @@ CREATE TABLE public.employee
     id bigint NOT NULL DEFAULT nextval('employee_id_seq'::regclass),
     age integer NOT NULL,
     name character varying(255) COLLATE pg_catalog."default",
-    salary integer NOT NULL,
+    salary double precision NOT NULL,
     CONSTRAINT employee_pkey PRIMARY KEY (id)
 )
 WITH (
