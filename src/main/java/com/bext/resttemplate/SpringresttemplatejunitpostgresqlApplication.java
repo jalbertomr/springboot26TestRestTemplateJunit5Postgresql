@@ -17,7 +17,7 @@ public class SpringresttemplatejunitpostgresqlApplication {
 	public static void main(String[] args) {
 		ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(SpringresttemplatejunitpostgresqlApplication.class, args);
 		EmployeeRepository employeeRepository = configurableApplicationContext.getBean(EmployeeRepository.class);
-		employeeRepository.save( new Employee("Rico Mc Pato", 50, 9999999.99));
+		//employeeRepository.save( new Employee("Rico Mc Pato", 50, 9999999.99));  //to create records by main
 		//configurableApplicationContext.close();	// To end the application
 	}
 

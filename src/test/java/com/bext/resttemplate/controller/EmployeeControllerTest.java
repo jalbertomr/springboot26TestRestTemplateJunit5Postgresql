@@ -8,7 +8,10 @@ import java.net.URISyntaxException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
@@ -22,6 +25,7 @@ import org.springframework.http.ResponseEntity;
 import com.bext.resttemplate.entity.Employee;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class EmployeeControllerTest {
 
 	@Autowired
@@ -31,6 +35,7 @@ class EmployeeControllerTest {
 	int randomServerPort;
 
 	@Test
+	@Order(2)
 	void createEmployeeSuccess() throws URISyntaxException {
 		final String baseUrl = "http://localhost:" + randomServerPort + "/employees/";
 		URI uri = new URI(baseUrl);
@@ -47,6 +52,7 @@ class EmployeeControllerTest {
 	}
 
 	@Test
+	@Order(1)
 	void createEmployeeWithOutHeader() throws URISyntaxException {
 		final String baseUrl = "http://localhost:" + randomServerPort + "/employees/";
 		URI uri = new URI(baseUrl);
@@ -63,6 +69,7 @@ class EmployeeControllerTest {
 	}
 
 	@Test
+	@Order(3)
 	void getEmployeeSuccess() throws URISyntaxException {
 		final String baseUrl = "http://localhost:" + randomServerPort + "/employees/1";
 		URI uri = new URI(baseUrl);
@@ -72,6 +79,7 @@ class EmployeeControllerTest {
 	}
 	
 	@Test
+	@Order(4)
 	void getEmployeesSuccess() throws URISyntaxException {
 		final String baseUrl = "http://localhost:" +  randomServerPort + "/employees/";
 		URI uri = new URI(baseUrl);
@@ -80,6 +88,7 @@ class EmployeeControllerTest {
 	}
 
 	@Test
+	@Order(5)
 	void updateEmployeeSuccess() throws URISyntaxException {
 		final String baseUrl = "http://localhost:" + randomServerPort + "/employees/1";
 		URI uri = new URI(baseUrl);
@@ -95,6 +104,7 @@ class EmployeeControllerTest {
 	}
 	
 	@Test
+	@Order(6)
 	void deleteEmployeeSuccess() throws URISyntaxException {
 		final String baseUrl = "http://localhost:" + randomServerPort + "/employees/1";
 		URI uri = new URI(baseUrl);
